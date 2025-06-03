@@ -1,0 +1,301 @@
+:root {
+    --primary-color: #1e3c72;
+    --secondary-color: #2a5298;
+    --accent-color: #ff6f61;
+    --text-color: #ffffff;
+    --bg-color: #1e3c72;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: var(--bg-color);
+    color: var(--text-color);
+    min-height: 100vh;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.container {
+    max-width: 340px;
+    width: 94vw;
+    margin: 47px auto 0;
+    padding: 22px 12px 23px 12px;
+    background: var(--secondary-color);
+    border-radius: 14px;
+    box-shadow: 0 0 16px rgba(0,0,0,0.13);
+    text-align: center;
+    position: relative;
+}
+
+header {
+    margin-bottom: 8px;
+}
+
+h1 {
+    font-size: 2.2rem;
+    margin: 0 0 4px 0;
+    color: var(--accent-color);
+    letter-spacing: -1px;
+}
+
+.header-img {
+    display: block;
+    margin: 8px auto 0;
+    width: 90px;
+    height: 90px;
+}
+
+.subtitle {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin: 5px 0;
+}
+
+.subtitle-bold {
+    font-size: 1.08rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    margin: 5px 0 35px;
+}
+
+main {
+    margin-top: 30px;
+}
+
+.time-box {
+    background: rgba(255,255,255,0.1);
+    border-radius: 10px;
+    padding: 10px;
+    margin: 7px 0 12px 0;
+}
+
+.time-display {
+    font-size: 1.3rem;
+    font-family: 'Courier New', monospace;
+    margin: 4px 0;
+}
+
+.status {
+    font-size: 1.05rem;
+    font-weight: bold;
+    color: #fff;
+    transition: color 0.2s;
+}
+.status.awake {
+    color: #222;
+}
+
+.controls {
+    display: flex;
+    flex-direction: column;
+    gap: 13px;
+    margin: 12px 0;
+}
+.controls > * {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.alarm-btn,
+.sleep-btn,
+.wake-btn,
+.popup-ok-btn,
+.btn {
+    border-radius: 999px !important;
+}
+
+.alarm-btn {
+    position: relative;
+    min-height: 58px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    padding: 0 24px;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none !important;
+    box-shadow: none;
+    outline: none;
+    cursor: pointer;
+    background: var(--accent-color);
+    color: #fff;
+}
+.alarm-btn.default {
+    background: var(--primary-color);
+    color: #fff;
+}
+
+.alarm-phrase {
+    width: 100%;
+    text-align: center;
+    white-space: pre-line;
+    z-index: 1;
+    transition: opacity 0.18s;
+    display: block;
+    opacity: 1;
+    padding-left: 6px;
+    padding-right: 6px;
+    box-sizing: border-box;
+    word-break: break-word;
+}
+
+.sleep-btn, .wake-btn {
+    min-height: 44px;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: background 0.2s, color 0.2s;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin: 0 auto;
+}
+
+.sleep-btn {
+    background: var(--primary-color);
+    color: #fff;
+    border: none;
+}
+
+.wake-btn {
+    background: #fff;
+    color: var(--primary-color);
+    border: none;
+    cursor: pointer;
+}
+
+.wake-btn.awake {
+    background: var(--secondary-color);
+    color: #fff;
+    border: none;
+    cursor: default;
+    pointer-events: none;
+}
+
+.wake-btn:hover:not(.awake) {
+    background: #e3ecfa;
+    color: var(--secondary-color);
+}
+
+.comment-container {
+    background: rgba(255,255,255,0.1);
+    border-radius: 9px;
+    padding: 10px 10px 1px 10px;
+    min-height: 70px;
+    margin: 12px 0;
+    font-size: 1rem;
+    line-height: 1.35;
+}
+
+.fail-banner {
+    display: none;
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    z-index: 1001;
+    background: #fff;
+    color: #111;
+    font-size: 1.45rem;
+    font-weight: bold;
+    text-align: center;
+    padding: 34px 18px 34px 18px;
+    border-radius: 0 0 22px 22px;
+    box-shadow: 0 8px 32px rgba(30,60,114,0.12);
+    letter-spacing: 1px;
+    transition: opacity 0.4s;
+}
+.fail-banner.active {
+    display: block;
+    opacity: 1;
+    animation: failBannerIn 0.5s;
+}
+@keyframes failBannerIn {
+    from { opacity: 0; transform: translateY(-40px);}
+    to   { opacity: 1; transform: translateY(0);}
+}
+
+.spinner-popup {
+    min-width: 190px;
+    padding: 16px 10px 14px 10px;
+    border-radius: 12px;
+    background: #fff;
+    color: #222;
+    box-shadow: 0 8px 32px rgba(30,60,114,0.22);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 13px;
+}
+
+.spinner-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 7px;
+}
+
+.spinner-col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+.spinner-btn {
+    background: var(--accent-color);
+    color: #fff;
+    border: none;
+    border-radius: 999px !important;
+    width: 30px;
+    height: 27px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background 0.15s;
+}
+.spinner-btn:hover {
+    background: #d94c4c;
+}
+
+.spinner-value {
+    font-size: 1.18rem;
+    font-family: 'Courier New', monospace;
+    width: 32px;
+    text-align: center;
+    background: #f6f6f6;
+    border-radius: 5px;
+    padding: 1px 0;
+    margin: 0;
+}
+
+.spinner-sep {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #222;
+    padding: 0 4px;
+}
+
+.popup {
+    position: fixed;
+    top: 0; left: 0; width: 100vw; height: 100vh;
+    background: rgba(30, 60, 114, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+@media (max-width: 480px) {
+    .container {
+        margin-top: 2vh;
+        padding: 7px;
+    }
+    h1 {
+        font-size: 1.5rem;
+    }
+    .alarm-btn, .sleep-btn, .wake-btn {
+        font-size: 0.95rem;
+    }
+}

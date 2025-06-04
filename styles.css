@@ -34,34 +34,35 @@ body {
     display: none;
     position: fixed;
     left: 50%;
-    top: 120px; /* опущена ближе к попапу */
+    top: 120px; /* ближе к попапу */
     transform: translateX(-50%);
+    width: 100%;
+    max-width: 340px;
     min-width: 160px;
-    max-width: 230px;
-    width: auto;
     background: var(--accent-color);
     color: #fff;
     border-radius: 10px;
-    padding: 10px 16px;
+    padding: 12px 18px;
     font-size: 1.1rem;
     font-weight: bold;
     text-align: center;
     box-shadow: 0 2px 8px rgba(0,0,0,0.13);
     z-index: 1002;
-    line-height: 1.3;
-    height: 38px;
+    line-height: 1.35;
+    height: 48px;
     display: flex;
     align-items: center;
     justify-content: center;
     opacity: 0;
     pointer-events: none;
     transition: opacity 0.3s;
+    box-sizing: border-box;
+    word-break: break-word;
 }
 .random-phrase-banner.active {
     display: flex;
     opacity: 1;
 }
-
 /* Верхняя плашка с часами */
 .time-box {
     background: rgba(255,255,255,0.1);

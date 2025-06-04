@@ -29,30 +29,53 @@ body {
     position: relative;
 }
 
-/* Баннер для случайной фразы */
+/* Всплывающая розовая плашка */
 .random-phrase-banner {
     display: none;
     position: fixed;
-    top: 20px;
+    top: 26px;
     left: 50%;
     transform: translateX(-50%);
-    z-index: 1002;
-    background: rgba(255, 111, 97, 0.95);
-    color: white;
-    padding: 12px 24px;
-    border-radius: 25px;
+    min-width: 160px;
+    max-width: 230px;
+    width: auto;
+    background: var(--accent-color);
+    color: #fff;
+    border-radius: 10px;
+    padding: 10px 16px;
     font-size: 1.1rem;
     font-weight: bold;
     text-align: center;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-    animation: phraseSlideIn 0.5s ease-out;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.13);
+    z-index: 1002;
+    line-height: 1.3;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+}
+.random-phrase-banner.active {
+    display: flex;
+    opacity: 1;
 }
 
-@keyframes phraseSlideIn {
-    from { top: -50px; opacity: 0; }
-    to { top: 20px; opacity: 1; }
+/* Верхняя плашка с часами */
+.time-box {
+    background: rgba(255,255,255,0.1);
+    border-radius: 10px;
+    padding: 10px;
+    margin: 7px 0 12px 0;
+    height: 38px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
+/* Остальные стили без изменений */
 header {
     margin-bottom: 8px;
 }
@@ -86,13 +109,6 @@ h1 {
 
 main {
     margin-top: 30px;
-}
-
-.time-box {
-    background: rgba(255,255,255,0.1);
-    border-radius: 10px;
-    padding: 10px;
-    margin: 7px 0 12px 0;
 }
 
 .time-display {
@@ -132,6 +148,8 @@ main {
 
 .alarm-btn {
     position: relative;
+    background: var(--accent-color);
+    color: #fff;
     min-height: 58px;
     font-size: 1.1rem;
     font-weight: bold;
@@ -144,8 +162,6 @@ main {
     box-shadow: none;
     outline: none;
     cursor: pointer;
-    background: var(--accent-color);
-    color: #fff;
 }
 .alarm-btn.default {
     background: var(--primary-color);
@@ -215,4 +231,85 @@ main {
     line-height: 1.35;
 }
 
-/* Остальные стили (баннеры, баобаб, попап, спиннеры, адаптив и т.д.) оставьте как были */
+.spinner-popup {
+    min-width: 190px;
+    padding: 16px 10px 14px 10px;
+    border-radius: 12px;
+    background: #fff;
+    color: #222;
+    box-shadow: 0 8px 32px rgba(30,60,114,0.22);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 13px;
+}
+
+.spinner-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 7px;
+}
+
+.spinner-col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+.spinner-btn {
+    background: var(--accent-color);
+    color: #fff;
+    border: none;
+    border-radius: 999px !important;
+    width: 30px;
+    height: 27px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background 0.15s;
+}
+.spinner-btn:hover {
+    background: #d94c4c;
+}
+
+.spinner-value {
+    font-size: 1.18rem;
+    font-family: 'Courier New', monospace;
+    width: 32px;
+    text-align: center;
+    background: #f6f6f6;
+    border-radius: 5px;
+    padding: 1px 0;
+    margin: 0;
+}
+
+.spinner-sep {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #222;
+    padding: 0 4px;
+}
+
+.popup {
+    position: fixed;
+    top: 0; left: 0; width: 100vw; height: 100vh;
+    background: rgba(30, 60, 114, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+@media (max-width: 480px) {
+    .container {
+        margin-top: 2vh;
+        padding: 7px;
+    }
+    h1 {
+        font-size: 1.5rem;
+    }
+    .alarm-btn, .sleep-btn, .wake-btn {
+        font-size: 0.95rem;
+    }
+}

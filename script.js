@@ -73,19 +73,6 @@ const phrases = {
     ]
 };
 
-const failButtonLabels = [
-    "Дедлайн провален! Баобаб негодует!",
-    "Сон ушёл, баобаб пришёл.",
-    "Ты снова не лег вовремя — поздравляю!",
-    "Баобаб: «Я разочарован!»",
-    "Миссия «лечь вовремя» провалена.",
-    "Баобаб смотрит на тебя с укором.",
-    "Снова не успел — снова баобаб!",
-    "Твоя кровать скучает. Баобаб — нет.",
-    "Пора признать: ты — ночной прокрастинатор.",
-    "Баобаб: «Ну ты и фрукт!»"
-];
-
 const sarcasticButtonLabels = [
     "В это время я притворюсь, что ложусь спать",
     "Мой план: уснуть хотя бы к этому часу",
@@ -109,8 +96,6 @@ let alarmTime = null;
 let spinnerHours = 23;
 let spinnerMinutes = 0;
 let isSleeping = false;
-let failTimeout = null;
-let isBaobabShown = false;
 
 document.addEventListener('DOMContentLoaded', () => {
     initClock();
@@ -159,12 +144,12 @@ function initButtons() {
         updateSpinnerDisplay();
     };
 
-    // Открытие попапа и показ случайной фразы
+    // Открытие попапа и показ компактной розовой фразы
     document.getElementById('setAlarm').addEventListener('click', () => {
         if (!alarmTime) {
             const phraseBanner = document.getElementById('randomPhraseBanner');
             phraseBanner.textContent = sarcasticButtonLabels[Math.floor(Math.random() * sarcasticButtonLabels.length)];
-            phraseBanner.style.display = 'block';
+            phraseBanner.classList.add('active');
             updateSpinnerDisplay();
             document.getElementById('timePopup').style.display = 'flex';
         }
@@ -179,7 +164,7 @@ function initButtons() {
         document.getElementById('setAlarm').classList.remove('default');
         document.getElementById('setAlarm').style.background = 'var(--accent-color)';
         document.getElementById('timePopup').style.display = 'none';
-        document.getElementById('randomPhraseBanner').style.display = 'none';
+        document.getElementById('randomPhraseBanner').classList.remove('active');
         document.getElementById('sleepBtn').disabled = false;
         document.getElementById('wakeBtn').disabled = true;
     });
@@ -223,7 +208,7 @@ function initButtons() {
     window.addEventListener('click', (event) => {
         if (event.target === document.getElementById('timePopup')) {
             document.getElementById('timePopup').style.display = 'none';
-            document.getElementById('randomPhraseBanner').style.display = 'none';
+            document.getElementById('randomPhraseBanner').classList.remove('active');
         }
     });
 }

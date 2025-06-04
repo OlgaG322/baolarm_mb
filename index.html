@@ -10,32 +10,26 @@
 </head>
 <body>
     <div class="container">
+        <!-- Баннер для случайной фразы при открытии попапа -->
+        <div id="randomPhraseBanner" class="random-phrase-banner"></div>
         <header>
             <h1>Баоларм</h1>
             <img src="icon-512.png" alt="Баоларм" width="90" height="90" class="header-img">
             <p class="subtitle">Злобный баобаб заставит тебя</p>
             <p class="subtitle-bold">ЗАСЫПАТЬ ВОВРЕМЯ</p>
         </header>
-
-        <!-- Баннер для провала дедлайна -->
-        <div id="failBanner" class="fail-banner"></div>
-
         <main>
             <div class="time-box">
                 <div id="currentTime" class="time-display"></div>
                 <div id="sleepStatus" class="status awake">Не сплю</div>
             </div>
-
             <div class="controls">
                 <button id="setAlarm" class="btn alarm-btn default">
-                    <span id="alarmPhrase" class="alarm-phrase">Когда спать собираешься?
-Нажми и выбери время</span>
+                    <span id="alarmPhrase" class="alarm-phrase">Когда спать собираешься?<br>Нажми и выбери время</span>
                 </button>
-                <button id="sleepBtn" class="btn sleep-btn">Иду спать!</button>
-                <button id="wakeBtn" class="btn wake-btn">Я проснулся!</button>
+                <button id="sleepBtn" class="btn sleep-btn" disabled>Иду спать!</button>
+                <button id="wakeBtn" class="btn wake-btn" disabled>Я проснулся!</button>
             </div>
-
-            <!-- Вынесенный попап вне .controls -->
             <div id="popupWrap">
                 <div id="timePopup" class="popup" style="display:none;">
                     <div class="popup-content spinner-popup">
@@ -56,7 +50,6 @@
                     </div>
                 </div>
             </div>
-
             <div class="comment-container">
                 <div id="comment" class="comment"></div>
             </div>

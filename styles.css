@@ -33,8 +33,8 @@ body {
 .random-phrase-banner {
     display: none;
     position: fixed;
-    top: 26px;
     left: 50%;
+    top: 120px; /* опущена ближе к попапу */
     transform: translateX(-50%);
     min-width: 160px;
     max-width: 230px;
@@ -75,7 +75,6 @@ body {
     justify-content: center;
 }
 
-/* Остальные стили без изменений */
 header {
     margin-bottom: 8px;
 }
@@ -311,5 +310,12 @@ main {
     }
     .alarm-btn, .sleep-btn, .wake-btn {
         font-size: 0.95rem;
+    }
+    .random-phrase-banner {
+        top: 80px;
+        max-width: 95vw;
+        font-size: 1rem;
+        padding: 8px 8px;
+        min-width: 90px;
     }
 }

@@ -146,13 +146,11 @@ function initButtons() {
 
     // Открытие попапа и показ компактной розовой фразы
     document.getElementById('setAlarm').addEventListener('click', () => {
-        if (!alarmTime) {
-            const phraseBanner = document.getElementById('randomPhraseBanner');
-            phraseBanner.textContent = sarcasticButtonLabels[Math.floor(Math.random() * sarcasticButtonLabels.length)];
-            phraseBanner.classList.add('active');
-            updateSpinnerDisplay();
-            document.getElementById('timePopup').style.display = 'flex';
-        }
+        const phraseBanner = document.getElementById('randomPhraseBanner');
+        phraseBanner.textContent = sarcasticButtonLabels[Math.floor(Math.random() * sarcasticButtonLabels.length)];
+        phraseBanner.classList.add('active');
+        updateSpinnerDisplay();
+        document.getElementById('timePopup').style.display = 'flex';
     });
 
     // Подтверждение времени

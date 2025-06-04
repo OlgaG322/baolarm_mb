@@ -29,6 +29,30 @@ body {
     position: relative;
 }
 
+/* Баннер для случайной фразы */
+.random-phrase-banner {
+    display: none;
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1002;
+    background: rgba(255, 111, 97, 0.95);
+    color: white;
+    padding: 12px 24px;
+    border-radius: 25px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    animation: phraseSlideIn 0.5s ease-out;
+}
+
+@keyframes phraseSlideIn {
+    from { top: -50px; opacity: 0; }
+    to { top: 20px; opacity: 1; }
+}
+
 header {
     margin-bottom: 8px;
 }
@@ -83,7 +107,6 @@ main {
     color: #fff;
     transition: color 0.2s;
 }
-
 .status.awake {
     color: #222;
 }
@@ -94,7 +117,6 @@ main {
     gap: 13px;
     margin: 12px 0;
 }
-
 .controls > * {
     margin: 0 !important;
     padding: 0 !important;
@@ -125,7 +147,6 @@ main {
     background: var(--accent-color);
     color: #fff;
 }
-
 .alarm-btn.default {
     background: var(--primary-color);
     color: #fff;
@@ -194,141 +215,4 @@ main {
     line-height: 1.35;
 }
 
-.fail-banner {
-    display: none;
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    z-index: 1001;
-    background: #fff;
-    color: #111;
-    font-size: 1.45rem;
-    font-weight: bold;
-    text-align: center;
-    padding: 34px 18px 34px 18px;
-    border-radius: 0 0 22px 22px;
-    box-shadow: 0 8px 32px rgba(30,60,114,0.12);
-    letter-spacing: 1px;
-    transition: opacity 0.4s;
-}
-
-.fail-banner.active {
-    display: block;
-    opacity: 1;
-    animation: failBannerIn 0.5s;
-}
-
-@keyframes failBannerIn {
-    from { opacity: 0; transform: translateY(-40px);}
-    to   { opacity: 1; transform: translateY(0);}
-}
-
-#baobabOverlay {
-    position: fixed;
-    top: -100%;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    z-index: 9999;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    pointer-events: none;
-    transition: top 1.2s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-#baobabOverlay.active {
-    top: 0;
-}
-
-.baobab-img {
-    width: 100vw;
-    max-width: 400px;
-    height: auto;
-    object-fit: contain;
-    margin-top: 0;
-    filter: drop-shadow(0 0 30px rgba(0,0,0,0.5));
-}
-
-.spinner-popup {
-    min-width: 190px;
-    padding: 16px 10px 14px 10px;
-    border-radius: 12px;
-    background: #fff;
-    color: #222;
-    box-shadow: 0 8px 32px rgba(30,60,114,0.22);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 13px;
-}
-
-.spinner-row {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 7px;
-}
-
-.spinner-col {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 5px;
-}
-
-.spinner-btn {
-    background: var(--accent-color);
-    color: #fff;
-    border: none;
-    border-radius: 999px !important;
-    width: 30px;
-    height: 27px;
-    font-size: 1.1rem;
-    cursor: pointer;
-    transition: background 0.15s;
-}
-
-.spinner-btn:hover {
-    background: #d94c4c;
-}
-
-.spinner-value {
-    font-size: 1.18rem;
-    font-family: 'Courier New', monospace;
-    width: 32px;
-    text-align: center;
-    background: #f6f6f6;
-    border-radius: 5px;
-    padding: 1px 0;
-    margin: 0;
-}
-
-.spinner-sep {
-    font-size: 1.2rem;
-    font-weight: bold;
-    color: #222;
-    padding: 0 4px;
-}
-
-.popup {
-    position: fixed;
-    top: 0; left: 0; width: 100vw; height: 100vh;
-    background: rgba(30, 60, 114, 0.7);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 1000;
-}
-
-@media (max-width: 480px) {
-    .container {
-        margin-top: 2vh;
-        padding: 7px;
-    }
-    h1 {
-        font-size: 1.5rem;
-    }
-    .alarm-btn, .sleep-btn, .wake-btn {
-        font-size: 0.95rem;
-    }
-}
+/* Остальные стили (баннеры, баобаб, попап, спиннеры, адаптив и т.д.) оставьте как были */

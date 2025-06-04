@@ -319,4 +319,27 @@ main {
         padding: 8px 8px;
         min-width: 90px;
     }
+
+    .popup-ok-btn {
+    width: 100%;
+    max-width: 260px;
+    margin: 10px auto 0 auto;
+    padding: 16px 0;
+    font-size: 1.15rem;
+    font-weight: bold;
+    background: var(--accent-color);
+    color: #fff;
+    border: none;
+    border-radius: 999px !important;
+    cursor: pointer;
+    display: block;
+    transition: background 0.18s, transform 0.15s;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+}
+
+.popup-ok-btn:hover,
+.popup-ok-btn:active {
+    background: #d94c4c;
+    transform: scale(1.04);
+}
 }
